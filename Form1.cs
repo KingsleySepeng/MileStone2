@@ -15,8 +15,10 @@ namespace MileStone2
         public FrmLogin()
         {
             InitializeComponent();
-            
-            FileHandler fh = new FileHandler();
+        }
+
+        FileHandler fh = new FileHandler();
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txtUserName.Text;
@@ -25,7 +27,7 @@ namespace MileStone2
             if (foundUser == true)
             {
                 MessageBox.Show("Welcome " + username);
-                frmCRUD frm1 = new frmCRUD();
+                FrmCRUD frm1 = new FrmCRUD();
                 frm1.Show();
             }
             else
@@ -60,11 +62,11 @@ namespace MileStone2
                 {
                     MessageBox.Show("Sorry, the user already exists");
                 }
-                else 
+                else
                 {
                     fh.addUser(addName, addPassword);
                     MessageBox.Show("User details has been successfully added");
-                    frmCRUD frm1 = new frmCRUD();
+                    FrmCRUD frm1 = new FrmCRUD();
                     frm1.Show();
                 }
             }
@@ -74,4 +76,10 @@ namespace MileStone2
             }
         }
     }
+
+    private void FrmLogin_Load(object sender, EventArgs e)
+    {
+
+    }
 }
+

@@ -32,7 +32,7 @@ namespace MileStone2
 
 
         }
-        public DataTable SearchModule(int code)
+        public DataTable SearchModule(string code)
         {
             using (SqlConnection connection = new SqlConnection(con))
             {
@@ -53,7 +53,7 @@ namespace MileStone2
 
         //===========================================================================================
 
-        public void CreateStudent(int id, string name, string surname, DateTime DOB, string gender, string phone, string address, string module)
+        public void CreateStudent(int id, string name, string surname, string DOB, string gender, string phone, string address, string module)
         { //choose image option
             using (SqlConnection connection = new SqlConnection(con))
             {
@@ -123,16 +123,16 @@ namespace MileStone2
         }
 
         //=======================================================================================================
-        public void UpdateStudent(int id, string name, string surname, DateTime DOB, string gender, string phone, string address, string module)
+        public void UpdateStudent(int id, string name, string surname, string gender, string phone, string address, string module)
         {
             SqlConnection connection = new SqlConnection(con);
             connection.Open();
-            string UpdateQuery1 = "UPDATE student SET FirstName =, LastName =, DOB = ,Gender =,Phone = , Address = , ModuleCode = ,  WHERE StudentID = ";
+            string UpdateQuery1 = "UPDATE student SET FirstName = , LastName = , Gender =, Phone = , Address = , ModuleCode = , WHERE StudentID = ";
             SqlCommand cmd1 = new SqlCommand(UpdateQuery1, connection);
             cmd1.Parameters.AddWithValue("StudentID", id);
             cmd1.Parameters.AddWithValue("FirstName", name);
             cmd1.Parameters.AddWithValue("LastName", surname);
-            cmd1.Parameters.AddWithValue("DOB", DOB);
+            
             cmd1.Parameters.AddWithValue("Gender", gender);
             cmd1.Parameters.AddWithValue("Phone", phone);
             cmd1.Parameters.AddWithValue("Address", address);

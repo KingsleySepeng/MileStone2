@@ -164,6 +164,7 @@ namespace MileStone2
             this.Controls.Add(this.Login);
             this.Name = "FrmLogin";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.Login.ResumeLayout(false);
             this.Login.PerformLayout();
             this.groupBox2.ResumeLayout(false);
