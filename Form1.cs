@@ -15,6 +15,63 @@ namespace MileStone2
         public FrmLogin()
         {
             InitializeComponent();
+            
+            FileHandler fh = new FileHandler();
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string username = txtUserName.Text;
+            string password = txtPassword.Text;
+            bool foundUser = fh.getUsers(username, password);
+            if (foundUser == true)
+            {
+                MessageBox.Show("Welcome " + username);
+                Main toMain = new Main();
+                toMain.Show();
+            }
+            else
+            {
+                MessageBox.Show("Sorry, the user does not exist");
+            }
+        }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            string addName = txtAddUserName.Text;
+            string addPassword = txtAddPassword.Text;
+            bool validUser = true;
+            foreach (char c in addName)
+            {
+                if (!char.IsLetter(c))
+                {
+                    if (c != ' ')
+                    {
+                        validUser = false;
+                    }
+                }
+            }
+            if (addPassword.Length < 8)
+            {
+                validUser = false;
+            }
+            if (validUser == true)
+            {
+                bool existingUser = fh.ifExist(addName, addPassword);
+                if (existingUser == true)
+                {
+                    MessageBox.Show("Sorry, the user already exists");
+                }
+                else 
+                {
+                    fh.addUser(addName, addPassword);
+                    MessageBox.Show("User details has been successfully added");
+                    Main toMain = new Main();
+                    toMain.Show();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please make sure your password is 8 characters or longer and your name only has letters");
+            }
         }
     }
 }
