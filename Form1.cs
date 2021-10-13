@@ -25,8 +25,8 @@ namespace MileStone2
             if (foundUser == true)
             {
                 MessageBox.Show("Welcome " + username);
-                Main toMain = new Main();
-                toMain.Show();
+                frmCRUD frm1 = new frmCRUD();
+                frm1.Show();
             }
             else
             {
@@ -64,8 +64,8 @@ namespace MileStone2
                 {
                     fh.addUser(addName, addPassword);
                     MessageBox.Show("User details has been successfully added");
-                    Main toMain = new Main();
-                    toMain.Show();
+                    frmCRUD frm1 = new frmCRUD();
+                    frm1.Show();
                 }
             }
             else
